@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MovementData" load_steps=2 format=3 uid="uid://bvast80iosmev"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/movement_data.gd" id="1_yne8c"]
+
+[resource]
+script = ExtResource("1_yne8c")
+max_speed = 80
+acceleration = 500
+friction = 500
+gravity_scale = 0.8
+jump_strength = 215
+knockback_force = 250

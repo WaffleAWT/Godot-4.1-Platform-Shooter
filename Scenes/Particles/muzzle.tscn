@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://2ehuxu8vyhe3"]
+
+[ext_resource type="Script" path="res://Scripts/Particles/muzzle.gd" id="1_5350h"]
+
+[sub_resource type="Gradient" id="Gradient_lp3lr"]
+offsets = PackedFloat32Array(0, 0.111111, 0.785185, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0.333333, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2y0b5"]
+gradient = SubResource("Gradient_lp3lr")
+
+[sub_resource type="Curve" id="Curve_bdq82"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.150602, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cs0ba"]
+curve = SubResource("Curve_bdq82")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xjnk2"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 16.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_cs0ba")
+color = Color(0.827451, 0.988235, 0.494118, 1)
+color_ramp = SubResource("GradientTexture1D_2y0b5")
+
+[node name="Muzzle" type="GPUParticles2D"]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_xjnk2")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_5350h")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

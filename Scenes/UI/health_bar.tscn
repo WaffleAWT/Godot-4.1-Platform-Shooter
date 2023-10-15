@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://gjbo06qhflpe"]
+
+[ext_resource type="Script" path="res://Scripts/UI/health_bar.gd" id="1_4ry31"]
+[ext_resource type="Texture2D" uid="uid://kql3agaabkub" path="res://Textures/UI/Health Bar Empty.png" id="1_7nhy7"]
+[ext_resource type="Texture2D" uid="uid://bptrdd6gov3f" path="res://Textures/UI/Health Bar.png" id="2_8vryg"]
+[ext_resource type="Texture2D" uid="uid://btn6cxaw5a8hq" path="res://Textures/UI/Player Head.png" id="5_gbrg4"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.167, 0.167)
+script = ExtResource("1_4ry31")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 41.9162
+offset_right = 73.9162
+offset_bottom = 7.0
+scale = Vector2(6, 6)
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("1_7nhy7")
+texture_progress = ExtResource("2_8vryg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 42.0
+offset_bottom = 40.0
+texture = ExtResource("5_gbrg4")

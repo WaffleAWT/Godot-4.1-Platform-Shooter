@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://2b2xfq1mesyu"]
+
+[ext_resource type="Script" path="res://Scripts/UI/bullet_ui.gd" id="1_uk8y2"]
+[ext_resource type="Texture2D" uid="uid://hkk8m5rrefjk" path="res://Textures/UI/Bullet.png" id="2_nad4y"]
+[ext_resource type="FontFile" uid="uid://cdinhkbw5qcbu" path="res://Fonts/PixelifySans-Regular.ttf" id="3_s0abe"]
+
+[node name="BulletUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+script = ExtResource("1_uk8y2")
+
+[node name="Slot" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+offset_left = 46.25
+offset_top = 1.25
+offset_right = 70.25
+offset_bottom = 25.25
+scale = Vector2(0.5, 0.5)
+stretch_mode = 4
+
+[node name="Bullet" type="TextureRect" parent="Slot"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nad4y")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Slot"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 6.5
+offset_right = 183.0
+offset_bottom = 111.5
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(0.351563, 0.769531, 0.308594, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_s0abe")
+theme_override_font_sizes/font_size = 84
+text = "x 30"
+horizontal_alignment = 1
+vertical_alignment = 1

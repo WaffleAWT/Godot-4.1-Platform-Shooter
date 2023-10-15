@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dr4mlmfv8ndbv"]
+
+[ext_resource type="Script" path="res://Scripts/Particles/PlayerDeathParticle.gd" id="1_cxafy"]
+
+[sub_resource type="Curve" id="Curve_mdd4v"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.060241, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_s7k85"]
+curve = SubResource("Curve_mdd4v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ek706"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 32.0
+initial_velocity_max = 64.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+angle_min = -720.0
+angle_max = 720.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_s7k85")
+color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[sub_resource type="Curve" id="Curve_qxgne"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0843374, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2sh1x"]
+curve = SubResource("Curve_qxgne")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qqa5x"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 32.0
+initial_velocity_max = 64.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 1.0
+linear_accel_max = 2.0
+angle_min = -720.0
+angle_max = 720.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_2sh1x")
+color = Color(0.827451, 0.988235, 0.494118, 1)
+
+[node name="PlayerDeathParticle" type="GPUParticles2D"]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_ek706")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_cxafy")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_qqa5x")
+one_shot = true
+explosiveness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

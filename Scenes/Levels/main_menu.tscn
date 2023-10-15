@@ -1,0 +1,180 @@
+[gd_scene load_steps=12 format=3 uid="uid://1nwvmn6wghcv"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/main_menu.gd" id="1_1h8h1"]
+[ext_resource type="FontFile" uid="uid://cdinhkbw5qcbu" path="res://Fonts/PixelifySans-Regular.ttf" id="1_ycleq"]
+[ext_resource type="Texture2D" uid="uid://bxb8fv3cum5cb" path="res://Textures/UI/Menu Background.png" id="2_b7f37"]
+[ext_resource type="Texture2D" uid="uid://c8swcohbmlu7u" path="res://Textures/UI/Menu Head.png" id="3_ocyqh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s08f8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.313726)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuls8"]
+bg_color = Color(0.6, 0.6, 0.6, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dk1s2"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1smoh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_hafqd"]
+resource_name = "Transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0742188, 0.0742188, 0.0742188, 1), Color(0.0745098, 0.0745098, 0.0745098, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Black:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_q4pwp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0745098, 0.0745098, 0.0745098, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_awv7d"]
+_data = {
+"RESET": SubResource("Animation_q4pwp"),
+"Transition": SubResource("Animation_hafqd")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1h8h1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b7f37")
+expand_mode = 1
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(160, 40)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("3_ocyqh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 115.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ycleq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_s08f8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tuls8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dk1s2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1smoh")
+text = "Start"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ycleq")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_s08f8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tuls8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dk1s2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1smoh")
+text = "Quit"
+
+[node name="Footer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -59.0
+offset_top = -16.0
+offset_right = 174.0
+offset_bottom = 46.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("1_ycleq")
+theme_override_font_sizes/font_size = 48
+text = "WaffleAWT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Black" type="ColorRect" parent="."]
+visible = false
+modulate = Color(0.0745098, 0.0745098, 0.0745098, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Transition"
+libraries = {
+"": SubResource("AnimationLibrary_awv7d")
+}
+
+[connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_start_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]

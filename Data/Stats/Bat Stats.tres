@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://ba2ax62c6bnx0"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/stats.gd" id="1_etv8g"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_etv8g")
+max_health = 3
+health = 0
